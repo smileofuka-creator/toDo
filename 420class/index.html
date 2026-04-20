@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="browser">
+      <div class="boardComp">
+        <div class="container">
+          <div class="input">
+            <h3>To-Do list</h3>
+            <div class="input-container">
+              <input id="input-text" placeholder="Add a new task .." ></input>
+              <button id="button-container" onclick="mybutton()">Add</button>
+            </div>
+            <div class="filter-container">
+              <button class="tab1" onclick="all()">All</button>
+              <button class="tab2">Active</button>
+              <button class="tab3">Completed</button>
+            </div>
+          </div>
+          <div class="task-container" id="container">No tasks yet. Add one above!
+            <div class="task-item">
+                <div class="item-style">
+                     <input type="checkbox">
+                     <label></label>
+                </div>
+                <button class="delete">Delete</button>
+            </div>
+          </div>
+        </div>
+        <div class="footerContainer">
+          <div class="footer-text">Powered by</div>
+          <a href="">Pinecone academy</a>
+        </div>
+      </div>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
