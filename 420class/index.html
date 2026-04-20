@@ -17,9 +17,9 @@
               <button id="button-container" onclick="mybutton()">Add</button>
             </div>
             <div class="filter-container">
-              <button class="tab1" onclick="all()">All</button>
-              <button class="tab2">Active</button>
-              <button class="tab3">Completed</button>
+              <button class="tab1 active-tab" onclick="showAll(this)">All</button>
+              <button class="tab2" onclick="showActive(this)">Active</button>
+              <button class="tab3"onclick="showCompleted(this)">Completed</button>
             </div>
           </div>
           <div class="task-container" id="container">No tasks yet. Add one above!

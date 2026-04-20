@@ -10,10 +10,11 @@
   display: flex;
   justify-content: center;
   background: #f3f4f6;
+  align-items: center;
 }
 .boardComp {
   width: 377px;
-  height: 290px;
+  min-height: 290px;
   top: 140px;
   left: 532px;
   border-radius: 6px;
@@ -40,8 +41,10 @@
   align-items: center;
 }
 .footerContainer {
-  width: 345;
+  width: 345px;
   display: flex;
+  justify-content: center;
+  gap: 10px;
 }
 .input {
   display: flex;
@@ -106,8 +109,10 @@ h3 {
   gap: 10px;
   color: white;
   border: none;
-
+}
+.active-tab {
   background: #3c82f6;
+  color: white;
 }
 .tab2 {
   width: 60px;
@@ -145,16 +150,31 @@ h3 {
   justify-content: space-between;
 }
 .delete {
-  width: 67;
-  height: 29;
+  width: 67px;
+  height: 29px;
   border-radius: 6px;
   padding-top: 6px;
   padding-right: 12px;
   padding-bottom: 6px;
   padding-left: 12px;
   gap: 10px;
-border: none
-background: #FEF2F2;
-background: #EF4444;
+  border: none;
+  color: red;
+  background: #fef2f2;
 
+  border: none;
+}
+
+.task-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.delete {
+  display: none;
+}
+.task-item:hover .delete {
+  display: block;
 }

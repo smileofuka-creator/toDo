@@ -12,5 +12,3 @@ function mybutton() {
             </div>`;
   console.log(myText);
 }
-
-let task = document.getElementsByClassName("task-container")[0];
