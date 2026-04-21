@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input id="input" />
+    <button onclick="print()">Add</button>
+    <ul id="ul">
+      <!-- <li>hello <input type="checkbox" /></li> -->
+    </ul>
+
+    <script>
+      let input = document.getElementById("input");
+      let ul = document.getElementById("ul");
+      function print() {
+        let li = document.createElement("li");
+        let checkbox = document.createElement("input");
+        let button = document.createElement("button");
+        checkbox.type = "checkbox";
+        li.textContent = input.value;
+        button.textContent = "remove";
+        button.onclick = deletela;
+        function deletela() {
+          li.remove();
+        }
+        ul.appendChild(li);
+        li.appendChild(checkbox);
+        li.appendChild(button);
+
+        // console.log(input.value, "galzuu galuu");
+      }
+    </script>
+  </body>
+</html>

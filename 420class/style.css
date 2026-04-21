@@ -107,8 +107,10 @@ h3 {
   padding-bottom: 4px;
   padding-left: 12px;
   gap: 10px;
-  color: white;
+
   border: none;
+  background: #3c82f6;
+  color: white;
 }
 .active-tab {
   background: #3c82f6;

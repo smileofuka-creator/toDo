@@ -12,19 +12,19 @@
         <div class="container">
           <div class="input">
             <h3>To-Do list</h3>
-            <div class="input-container">
-              <input id="input-text" placeholder="Add a new task .." ></input>
+            <div class="inputContainer">
+              <input id="inputText" placeholder="Add a new task .." ></input>
               <button id="button-container" onclick="mybutton()">Add</button>
             </div>
-            <div class="filter-container">
-              <button class="tab1 active-tab" onclick="showAll(this)">All</button>
+            <div class="filterContainer">
+              <button class="tab1" onclick="showAll(this)">All</button>
               <button class="tab2" onclick="showActive(this)">Active</button>
               <button class="tab3"onclick="showCompleted(this)">Completed</button>
             </div>
           </div>
-          <div class="task-container" id="container">No tasks yet. Add one above!
-            <div class="task-item">
-                <div class="item-style">
+          <div class="taskContainer" id="container">No tasks yet. Add one above!
+            <div id="taskItem">
+                <div class="itemStyle">
                      <input type="checkbox">
                      <label></label>
                 </div>
@@ -33,7 +33,7 @@
           </div>
         </div>
         <div class="footerContainer">
-          <div class="footer-text">Powered by</div>
+          <div class="footerText">Powered by</div>
           <a href="">Pinecone academy</a>
         </div>
       </div>
