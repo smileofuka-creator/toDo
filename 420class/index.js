@@ -4,50 +4,55 @@ let container = document.getElementById("container");
 let tasks = [];
 
 function mybutton() {
-  // let text = input.value;
   if (input.value.trim() === "") return;
-
   tasks.push({ tasklist: input.value, isComplete: false });
-
-  // tasklist();
   input.value = "";
-
   renderTasks();
 }
 
 function renderTasks() {
   container.innerHTML = "";
 
-  if (tasks.length === 0) {
-    container.innerText = "No tasks yet. Add one above!";
-    return;
+  //filter hiine
+  let currentFilter = "all";
+  let filteredTasks = tasks;
+
+  if (currentFilter === "active") {
+    filteredTasks = tasks.filter((t) => !t.isComplete);
+  } else if (currentFilter === "completed") {
+    filteredTasks = tasks.filter((t) => t.isComplete);
   }
 
-  for (let i = 0; i < tasks.length; i++) {
-    let task = tasks[i];
+  //duusgana
 
-    let item = document.createElement("div");
-    item.className = "taskItem"; // ene div dee ner ugch bga yumuu
+  // if (tasks.length === 0) {
+  //   container.innerText = "No tasks yet. Add one above!";
+  //   return;
+  // }
 
-    let itemStyle = document.createElement("div");
-    itemStyle.className = "itemStyle";
+  // for (let i = 0; i < tasks.length; i++) {
+  //   let task = tasks[i];
 
-    let checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
-    checkbox.checked = task.isComplete;
+  //   let item = document.createElement("div");
+  //   item.className = "taskItem";
 
+  //   let itemStyle = document.createElement("div");
+  //   itemStyle.className = "itemStyle";
+
+  //   let checkbox = document.createElement("input");
+  //   checkbox.type = "checkbox";
+  //   checkbox.checked = task.isComplete;
     // checkbox.addEventListener("click", function())
 
     // Чекбокс дарахад төлөвийг хадгалах
     checkbox.onchange = () => {
       task.isComplete = checkbox.checked;
+
       renderTasks();
     };
 
     let taskName = document.createElement("p");
     taskName.textContent = task.tasklist;
-    // taskName.textContent = tasks[i].tasklist;
-    // console.log(tasks);
 
     let remove = document.createElement("button");
     remove.textContent = "Delete";
@@ -61,32 +66,51 @@ function renderTasks() {
     // function deleta() {
     //   item.remove();
 
-    if (container.children.length === 0) {
-      container.innerText = "No tasks yet. And one above!";
-    }
+    itemStyle.appendChild(checkbox);
+    itemStyle.appendChild(taskName);
+    item.appendChild(itemStyle);
+    item.appendChild(remove);
+
+    container.appendChild(item);
   }
-
-  itemStyle.appendChild(checkbox);
-  itemStyle.appendChild(taskName);
-  item.appendChild(itemStyle);
-  item.appendChild(remove);
-
-  container.appendChild(item);
-  // input.value = "";
-}
 }
 
-function tasklist() {
-  // console.log("Mini bichsn utga", input.value);
-  if (input.value === "") {
-    // console.log("Ehleed yum bicheedee");
-    return;
-  }
+//ungu oruulah heseg
+let tab1 = document.getElementsByClassName("tab1")[0];
+let tab2 = document.getElementsByClassName("tab2")[0];
+let tab3 = document.getElementsByClassName("tab3")[0];
 
-  tasks.push({ tasklist: input.value, isComplete: false });
-  // console.log("TODOS", tasks);
+function showAll() {
+  tab1.style.backgroundColor = "#3c82f6";
+  tab1.style.color = "white";
+  tab2.style.backgroundColor = "white";
+  tab2.style.color = "black";
+  tab3.style.backgroundColor = "white";
+  tab3.style.color = "black";
+  currentFilter = "all";
+  renderTasks();
+}
 
-  input.value = "";
+function showActive() {
+  tab2.style.backgroundColor = "#3c82f6";
+  tab2.style.color = "white";
+  tab1.style.backgroundColor = "white";
+  tab1.style.color = "black";
+  tab3.style.backgroundColor = "white";
+  tab3.style.color = "black";
+  currentFilter = "active";
+  renderTasks();
+}
+
+function showCompleted() {
+  tab3.style.backgroundColor = "#3c82f6";
+  tab3.style.color = "white";
+  tab1.style.backgroundColor = "white";
+  tab1.style.color = "black";
+  tab2.style.backgroundColor = "white";
+  tab2.style.color = "black";
+  currentFilter = "completed";
+  renderTasks();
 }
 
 // nemelt uusgej hadgalsn
@@ -119,38 +143,6 @@ function tasklist() {
 // }
 
 //filter hj 3 angilah heseg
-
-//ungu oruulah heseg
-let tab1 = document.getElementsByClassName("tab1")[0];
-let tab2 = document.getElementsByClassName("tab2")[0];
-let tab3 = document.getElementsByClassName("tab3")[0];
-
-function showAll() {
-  tab1.style.backgroundColor = "#3c82f6";
-  tab1.style.color = "white";
-  tab2.style.backgroundColor = "white";
-  tab2.style.color = "black";
-  tab3.style.backgroundColor = "white";
-  tab3.style.color = "black";
-}
-
-function showActive() {
-  tab2.style.backgroundColor = "#3c82f6";
-  tab2.style.color = "white";
-  tab1.style.backgroundColor = "white";
-  tab1.style.color = "black";
-  tab3.style.backgroundColor = "white";
-  tab3.style.color = "black";
-}
-
-function showCompleted() {
-  tab3.style.backgroundColor = "#3c82f6";
-  tab3.style.color = "white";
-  tab1.style.backgroundColor = "white";
-  tab1.style.color = "black";
-  tab2.style.backgroundColor = "white";
-  tab2.style.color = "black";
-}
 
 // let me = {
 //   firstName: "Batbayar",
