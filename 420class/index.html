@@ -14,22 +14,30 @@
             <h3>To-Do list</h3>
             <div class="inputContainer">
               <input id="inputText" placeholder="Add a new task .." ></input>
-              <button id="button-container" onclick="mybutton()">Add</button>
+              <button id="buttonContainer" onclick="mybutton()">Add</button>
             </div>
             <div class="filterContainer">
               <button class="tab1" onclick="showAll(this)">All</button>
               <button class="tab2" onclick="showActive(this)">Active</button>
-              <button class="tab3"onclick="showCompleted(this)">Completed</button>
+              <button class="tab3" onclick="showCompleted(this)">Completed</button>
+
+
+
+
+<!-- 
+              <button onclick="filterTodo('all')">All</button>
+              <button  onclick="filterTodo('active')">Active</button>
+              <button onclick="filterTodo('complete')">Completed</button> -->
             </div>
           </div>
           <div class="taskContainer" id="container">No tasks yet. Add one above!
-            <div id="taskItem">
+            <!-- <div id="taskItem">
                 <div class="itemStyle">
                      <input type="checkbox">
-                     <label></label>
+                     <p></p>
                 </div>
                 <button class="delete">Delete</button>
-            </div>
+            </div> -->
           </div>
         </div>
         <div class="footerContainer">
