@@ -2,6 +2,7 @@ let input = document.getElementById("inputText");
 let container = document.getElementById("container");
 
 let tasks = [];
+let filter = "";
 
 function mybutton() {
   if (input.value.trim() === "") return;
@@ -13,38 +14,28 @@ function mybutton() {
 function renderTasks() {
   container.innerHTML = "";
 
-  //filter hiine
-  let currentFilter = "all";
-  let filteredTasks = tasks;
-
-  if (currentFilter === "active") {
-    filteredTasks = tasks.filter((t) => !t.isComplete);
-  } else if (currentFilter === "completed") {
-    filteredTasks = tasks.filter((t) => t.isComplete);
+  if (tasks.length === 0) {
+    container.innerText = "No tasks yet. Add one above!";
+    return;
   }
 
-  //duusgana
+  for (let i = 0; i < tasks.length; i++) {
+    if (filter === "active" && tasks[i].isComplete === true) continue;
+    if (filter === "completed" && tasks[i].isComplete === false) continue;
 
-  // if (tasks.length === 0) {
-  //   container.innerText = "No tasks yet. Add one above!";
-  //   return;
-  // }
+    let task = tasks[i];
 
-  // for (let i = 0; i < tasks.length; i++) {
-  //   let task = tasks[i];
+    let item = document.createElement("div");
+    item.className = "taskItem";
 
-  //   let item = document.createElement("div");
-  //   item.className = "taskItem";
+    let itemStyle = document.createElement("div");
+    itemStyle.className = "itemStyle";
 
-  //   let itemStyle = document.createElement("div");
-  //   itemStyle.className = "itemStyle";
+    let checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.checked = task.isComplete;
+    // checkbox.addEventListener("click", function () {});
 
-  //   let checkbox = document.createElement("input");
-  //   checkbox.type = "checkbox";
-  //   checkbox.checked = task.isComplete;
-    // checkbox.addEventListener("click", function())
-
-    // Чекбокс дарахад төлөвийг хадгалах
     checkbox.onchange = () => {
       task.isComplete = checkbox.checked;
 
@@ -58,13 +49,9 @@ function renderTasks() {
     remove.textContent = "Delete";
 
     remove.onclick = function () {
-      tasks.splice(i, 1); // Массиваас устгах
-      renderTasks(); // Дэлгэцийг шинэчилж зурах
+      tasks.splice(i, 1);
+      renderTasks();
     };
-
-    // remove.onclick = deleta;
-    // function deleta() {
-    //   item.remove();
 
     itemStyle.appendChild(checkbox);
     itemStyle.appendChild(taskName);
@@ -81,6 +68,8 @@ let tab2 = document.getElementsByClassName("tab2")[0];
 let tab3 = document.getElementsByClassName("tab3")[0];
 
 function showAll() {
+  filter = "";
+  renderTasks();
   tab1.style.backgroundColor = "#3c82f6";
   tab1.style.color = "white";
   tab2.style.backgroundColor = "white";
@@ -88,10 +77,11 @@ function showAll() {
   tab3.style.backgroundColor = "white";
   tab3.style.color = "black";
   currentFilter = "all";
-  renderTasks();
 }
 
 function showActive() {
+  filter = "active";
+  renderTasks();
   tab2.style.backgroundColor = "#3c82f6";
   tab2.style.color = "white";
   tab1.style.backgroundColor = "white";
@@ -99,10 +89,11 @@ function showActive() {
   tab3.style.backgroundColor = "white";
   tab3.style.color = "black";
   currentFilter = "active";
-  renderTasks();
 }
 
 function showCompleted() {
+  filter = "completed";
+  renderTasks();
   tab3.style.backgroundColor = "#3c82f6";
   tab3.style.color = "white";
   tab1.style.backgroundColor = "white";
@@ -110,39 +101,7 @@ function showCompleted() {
   tab2.style.backgroundColor = "white";
   tab2.style.color = "black";
   currentFilter = "completed";
-  renderTasks();
 }
-
-// nemelt uusgej hadgalsn
-
-// function filterTodo(value) {
-//   if (value === "all") {
-//     tasklist();
-//   } else if (value === "active") {
-//     container.innerHTML = "";
-//     for (let i = 0; i < tasks.length; i++) {
-//       if (!tasks[i].isComplete) {
-//         let task = tasks[i];
-//         let item = document.createElement("div");
-//         item.innerHTML = task.taskName;
-
-//         let checkbox = document.createElement("input");
-//         checkbox.type = task.isComplete;
-
-//         checkbox.type = "checkbox";
-//         item.appendChild(checkboxa);
-//         checkbox.checked = task.isComplete;
-
-//         checkbox.addEventListener("click", function () {
-//           tasks[i].isComplete = checkbox.checked;
-//         });
-//         container.appendChild(item);
-//       }
-//     }
-//   }
-// }
-
-//filter hj 3 angilah heseg
 
 // let me = {
 //   firstName: "Batbayar",
