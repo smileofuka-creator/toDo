@@ -14,10 +14,16 @@ function mybutton() {
 
 function renderTasks() {
   container.innerHTML = "";
-
+  taskinfo.innerHTML = "";
   if (tasks.length === 0) {
     container.innerText = "No tasks yet. Add one above!";
     return;
+  }
+
+  let checkedCount = 0;
+
+  for (let i = 0; i < tasks.length; i++) {
+    if (tasks[i].isComplete === true) checkedCount++;
   }
 
   for (let i = 0; i < tasks.length; i++) {
@@ -35,11 +41,10 @@ function renderTasks() {
     let checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.checked = task.isComplete;
-    // checkbox.addEventListener("click", function () {});
+    // checkbox.addEventListener("click", function () {}); bichij boloh yum  onclick n orond
 
     checkbox.onchange = () => {
       task.isComplete = checkbox.checked;
-
       renderTasks();
     };
 
@@ -47,6 +52,7 @@ function renderTasks() {
     taskName.textContent = task.tasklist;
 
     let remove = document.createElement("button");
+    remove.className = "taskDelete";
     remove.textContent = "Delete";
 
     remove.onclick = function () {
@@ -54,44 +60,35 @@ function renderTasks() {
       renderTasks();
     };
 
-    taskinfo.innerHTML = "";
-    let count = document.createElement("span");
-    count.textContent = `${0} of ${tasks.length}`;
-    taskinfo.appendChild(count);
-    let clearCompleted = document.createElement("button");
-    clearCompleted.textContent = "Clear completed";
-    // clearCompleted = `${completedCount} of ${tasks.length}`;
-    clearCompleted.addEventListener("click", function () {
-      for (let i = 0; i < tasks.length; i++)
-        if (filter === "completed" && tasks[i].isComplete === false) continue;
-
-      // checkbox.checked = task.isComplete;
-      console.log("hallo ma bro");
-      renderTasks();
-    });
-    // tasks = tasks.filter(task => task.isComplete === false);
-    // renderTasks();
-    // let activeCount = 0;
-    // let completedCount = 0;
-
-    // if (task.isComplete) {
-    //   completedCount++;
-    // } else {
-    //   activeCount++;
-    // }
-
     itemStyle.appendChild(checkbox);
     itemStyle.appendChild(taskName);
     item.appendChild(itemStyle);
     item.appendChild(remove);
-    taskinfo.appendChild(count);
-    taskinfo.appendChild(clearCompleted);
 
     container.appendChild(item);
   }
-  // document.getElementById("taskCount").innerText =
-  //   `${completedCount} of ${tasks.length} tasks completed`;
-  // renderTasks();
+
+  let count = document.createElement("span");
+  count.textContent = `${checkedCount} of ${tasks.length}  tasks completed`;
+
+  let clearCompleted = document.createElement("button");
+  clearCompleted.id = "clear";
+  clearCompleted.textContent = "Clear completed";
+
+  clearCompleted.onclick = () => {
+    tasks = tasks.filter((task) => !task.isComplete);
+    // clearCompleted.addEventListener("click", function () {
+    //   for (let i = tasks.length - 1; i >= 0; i--) {
+    //   if (tasks[i].isComplete) {
+    //     tasks.splice(i, 1);
+    //   }
+    // } enuuger bs boloh yum
+    console.log("hallo ma bro");
+    renderTasks();
+  };
+
+  taskinfo.appendChild(count);
+  taskinfo.appendChild(clearCompleted);
 }
 
 //ungu oruulah heseg
@@ -108,7 +105,6 @@ function showAll() {
   tab2.style.color = "black";
   tab3.style.backgroundColor = "white";
   tab3.style.color = "black";
-  currentFilter = "all";
 }
 
 function showActive() {
@@ -120,7 +116,6 @@ function showActive() {
   tab1.style.color = "black";
   tab3.style.backgroundColor = "white";
   tab3.style.color = "black";
-  currentFilter = "active";
 }
 
 function showCompleted() {
@@ -132,7 +127,6 @@ function showCompleted() {
   tab1.style.color = "black";
   tab2.style.backgroundColor = "white";
   tab2.style.color = "black";
-  currentFilter = "completed";
 }
 
 // let me = {
@@ -182,5 +176,3 @@ function showCompleted() {
 //     console.log(persona[i]);
 //   let y =
 // for(let j = 0; j<)}
-
-// }

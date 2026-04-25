@@ -165,7 +165,7 @@ button {
   padding-left: 12px;
   gap: 10px;
   border: none;
-  color: red;
+  /* color: red; */
   background: #fef2f2;
 
   border: none;
@@ -181,6 +181,7 @@ button {
 .taskItem button {
   display: none;
   border: none;
+  color: red;
 }
 .taskItem button:hover {
   display: block;
@@ -193,4 +194,30 @@ button {
 .itemStyle {
   display: flex;
   justify-content: space-between;
+}
+#taskInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 345px;
+}
+span {
+  color: #6b7280;
+  font-family: Inter;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 14px;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+#clear {
+  color: red;
+  background: none;
+  width: 140px;
+}
+.taskDelete {
+  color: red;
+  width: 140px;
 }
