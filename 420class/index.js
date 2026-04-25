@@ -1,5 +1,6 @@
 let input = document.getElementById("inputText");
 let container = document.getElementById("container");
+let taskinfo = document.querySelector("#taskInfo");
 
 let tasks = [];
 let filter = "";
@@ -53,13 +54,44 @@ function renderTasks() {
       renderTasks();
     };
 
+    taskinfo.innerHTML = "";
+    let count = document.createElement("span");
+    count.textContent = `${0} of ${tasks.length}`;
+    taskinfo.appendChild(count);
+    let clearCompleted = document.createElement("button");
+    clearCompleted.textContent = "Clear completed";
+    // clearCompleted = `${completedCount} of ${tasks.length}`;
+    clearCompleted.addEventListener("click", function () {
+      for (let i = 0; i < tasks.length; i++)
+        if (filter === "completed" && tasks[i].isComplete === false) continue;
+
+      // checkbox.checked = task.isComplete;
+      console.log("hallo ma bro");
+      renderTasks();
+    });
+    // tasks = tasks.filter(task => task.isComplete === false);
+    // renderTasks();
+    // let activeCount = 0;
+    // let completedCount = 0;
+
+    // if (task.isComplete) {
+    //   completedCount++;
+    // } else {
+    //   activeCount++;
+    // }
+
     itemStyle.appendChild(checkbox);
     itemStyle.appendChild(taskName);
     item.appendChild(itemStyle);
     item.appendChild(remove);
+    taskinfo.appendChild(count);
+    taskinfo.appendChild(clearCompleted);
 
     container.appendChild(item);
   }
+  // document.getElementById("taskCount").innerText =
+  //   `${completedCount} of ${tasks.length} tasks completed`;
+  // renderTasks();
 }
 
 //ungu oruulah heseg
